@@ -1,0 +1,3 @@
+[submodule "time-zone-ts"]
+	path = time-zone-ts
+	url = git@github.com:okyawa/time-zone-ts.git
