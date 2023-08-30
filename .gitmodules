@@ -1,3 +1,6 @@
 [submodule "time-zone-ts"]
 	path = time-zone-ts
 	url = git@github.com:okyawa/time-zone-ts.git
+[submodule "laravel-v8-book-tdd-study"]
+	path = laravel-v8-book-tdd-study
+	url = git@github.com:okyawa/laravel-v8-book-tdd-study.git
