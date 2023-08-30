@@ -27,10 +27,17 @@ git commit -a
 git clone https://example.com/repo-with-sub-modules --recursive
 ```
 
-### サブモジュールのファイルを取得
+### 他の人がサブモジュール追加したものを反映 / git cloneした後からサブモジュールのファイルを取得
 
+- 下記のコマンドを実行すると、 `.git/config` に `.gitmodules` の内容が自動的に書き込まれる
 ```sh
 git submodule update --init
+```
+
+### サブモジュールのファイルを更新
+
+```sh
+git submodule update
 ```
 
 ### サブモジュールがどのバージョンを指しているか確認
