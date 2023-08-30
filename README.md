@@ -19,6 +19,15 @@ git submodule add https://example.com/sub-modules
 git commit -a
 ```
 
+#### サブモジュール名を変更して追加したい場合
+
+- 最後にパス指定を加える
+
+```sh
+git submodule add https://example.com/sub-modules path指定
+git commit -a
+```
+
 ### サブモジュールを含んだGitレポジトリを git clone
 
 - `git clone` に `--recursive` オプションをつける
