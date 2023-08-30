@@ -65,17 +65,13 @@ git commit -a
 
 ### サブモジュールを削除
 
-- サブモジュールの情報が複数の場所に保存されているため、複数の手順が必要
-- `git submodule deinit -f サブモジュール名` で、サブモジュールの登録解除
+- `git submodule deinit サブモジュール名` で、サブモジュールの登録解除
 - 親のgit管理からサブモジュールを削除
-  - `git rm -f サブモジュール名`
-- `.git/config` の設定ファイルから、サブモジュールを削除
-  - `git config -f .gitmodules --remove-section submodule.サブモジュール名` のコマンドで、gitの設定ファイルからサブモジュールを削除
+  - `git rm サブモジュール名`
 - 最後に、親のgit管理でコミットする
 - 下記は、削除したいサブモジュール名が `sub-module` の場合の例
 ```sh
-git submodule deinit -f sub-module
-git rm -f sub-module
-git config -f .gitmodules --remove-section submodule.sub-module
+git submodule deinit sub-module
+git rm sub-module
 git commit -a
 ```
