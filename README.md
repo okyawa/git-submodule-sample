@@ -2,10 +2,11 @@
 
 ## 概要
 
-- `git submodule` は、外部の `git` リポジトリを、自分の `git` リポジトリのサブディレクトリとして登録し、特定の `commit` を参照する仕組み
-- `submodule` として追加したディレクトリは、ただの外部リポジトリへ参照を記録した箱
-- `submodule` の外側は、その箱のどのコミットを参照しているのかを記録
-- `submodule` の内側は、基本的には、自分が操作したときにしか更新されない
+- Gitサブモジュールは、Gitリポジトリ内に別のGitリポジトリを組み込むための仕組み
+  - `git submodule` は、外部の `git` リポジトリを、自分の `git` リポジトリのサブディレクトリとして登録し、特定の `commit` を参照する仕組み
+  - `submodule` として追加したディレクトリは、ただの外部リポジトリへ参照を記録した箱
+  - `submodule` の外側は、その箱のどのコミットを参照しているのかを記録
+  - `submodule` の内側は、基本的には、自分が操作したときにしか更新されない
 
 ## git submodule チートシート
 
@@ -15,7 +16,7 @@
   - `.gitmodules` ファイルが更新される
 
 ```sh
-git submodule add https://example.com/sub-modules
+git submodule add <サブモジュールのリポジトリURL>
 git commit -a
 ```
 
@@ -24,7 +25,7 @@ git commit -a
 - 最後にパス指定を加える
 
 ```sh
-git submodule add https://example.com/sub-modules path指定
+git submodule add <サブモジュールのリポジトリURL> <ディレクトリ名>
 git commit -a
 ```
 
@@ -36,8 +37,17 @@ git commit -a
 git clone https://example.com/repo-with-sub-modules --recursive
 ```
 
+### サブモジュールの初期化
+
+- サブモジュールを追加した後、初期化が必要
+
+```sh
+git submodule init
+```
+
 ### 他の人がサブモジュール追加したものを反映 / git cloneした後からサブモジュールのファイルを取得
 
+- `git submodule update --init` で、サブモジュールの更新と初期化を同時に行う
 - 下記のコマンドを実行すると、 `.git/config` に `.gitmodules` の内容が自動的に書き込まれる
 ```sh
 git submodule update --init
@@ -46,7 +56,16 @@ git submodule update --init
 ### サブモジュールのファイルを更新
 
 ```sh
-git submodule update
+git submodule update --remote
+```
+
+#### サブモジュール内のコードを更新
+
+- サブモジュールのディレクトリに入り、 `git pull` で最新の履歴を反映
+
+```sh
+cd <サブモジュールのディレクトリ>
+git pull
 ```
 
 ### サブモジュールがどのバージョンを指しているか確認
